@@ -23,7 +23,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/bootstrap.min.css"
             ],
             "scripts": []
           },
@@ -115,6 +116,46 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "jtep": {
+      "root": "projects/jtep",
+      "sourceRoot": "projects/jtep/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/jtep/tsconfig.lib.json",
+            "project": "projects/jtep/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/jtep/ng-package.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/jtep/src/test.ts",
+            "tsConfig": "projects/jtep/tsconfig.spec.json",
+            "karmaConfig": "projects/jtep/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/jtep/tsconfig.lib.json",
+              "projects/jtep/tsconfig.spec.json"
+            ],
             "exclude": [
               "**/node_modules/**"
             ]

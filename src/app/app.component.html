@@ -1,4 +1,15 @@
 <!--The content below is only a placeholder and can be replaced.-->
+<a [routerLink]="['']">Home</a><br>
+<a [routerLink]="['dashboard']">Dashboard</a><br>
+<a [routerLink]="['dashboard','user']">Dashboard User</a><br>
+
+<br>
+
+{{auth.user | json}}
+
+<a (click)="auth.login()">Login</a><br><br>
+<a (click)="auth.logout()">Logout</a>
+<router-outlet></router-outlet>
 <div style="text-align:center">
   <h1>
     Welcome to {{ title }}!
@@ -18,3 +29,16 @@
   </li>
 </ul>
 
+<div #modalFirst="bs-modal" bsModal>
+  <table>
+    <tr>
+      <td>
+        sfs sf fjsdfjjsf ksj klsdj l sf
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<button (click)="modalFirst.hide()">Hide</button>
+<button (click)="modalFirst.show()">Hide</button>
